@@ -29,7 +29,7 @@ class Category(models.Model):
     def __str__(self):
         return self.title
     
-    objects = CategoryManager
+    objects = CategoryManager()
 
 class articles(models.Model):
     STATUS_CHOICES = (
