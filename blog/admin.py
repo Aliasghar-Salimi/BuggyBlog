@@ -26,7 +26,7 @@ make_published.short_description = "انتشار مقالات انتخاب شد�
 make_draft.short_description = "پیشنویس کردن مقالات انتخاب شده"
 
 class articleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug', 'jpublish', 'status', 'category_to_str')
+    list_display = ('title', 'thumbnail_tag', 'slug', 'jpublish', 'status', 'category_to_str')
     list_filter = ('publish', 'status')
     search_fields = ('title', 'description')
     prepopulated_fields = {'slug' : ('title',)}

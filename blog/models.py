@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from extentions.utils import jalali_converter
-
+from django.utils.html import format_html
 # my managers
 class ArticleManager(models.Manager):
     def published(self):
@@ -61,4 +61,8 @@ class articles(models.Model):
     def category_published(self):
         return self.category.filter(status=True)
     
+    def thumbnail_tag(self):
+        return format_html("<img width='100' hieght='75' src='{}'>".format(self.thumbnail.url))
+    thumbnail_tag.short_description = 'عکس'
+
     objects = ArticleManager()
