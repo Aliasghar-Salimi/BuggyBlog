@@ -26,14 +26,14 @@ make_published.short_description = "انتشار مقالات انتخاب شد�
 make_draft.short_description = "پیشنویس کردن مقالات انتخاب شده"
 
 class articleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'thumbnail_tag', 'slug', 'jpublish', 'status', 'category_to_str')
-    list_filter = ('publish', 'status')
+    list_display = ('title', 'thumbnail_tag','author', 'slug', 'jpublish', 'status', 'category_to_str')
+    list_filter = ('publish', 'status', 'author')
     search_fields = ('title', 'description')
     prepopulated_fields = {'slug' : ('title',)}
     actions = [make_published, make_draft]
 
     def category_to_str(self, obj):
-        return "، ".join([cat.title for cat in obj.category_published()])
+        return "، ".join([cat.title for cat in obj.category.active()])
 
     category_to_str.short_description = 'دسته‌بندی'
 

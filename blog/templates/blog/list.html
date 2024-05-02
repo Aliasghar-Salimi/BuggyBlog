@@ -31,7 +31,7 @@
                     </a>
                     <p class="post-meta">
                         نویسنده
-                        <a href="#!">علی </a>
+                        <a href="{% url 'Blog:author' article.author %}">{{article.author.get_full_name}} </a>
                         {{article.jpublish}}
                     </p>
                     <div>

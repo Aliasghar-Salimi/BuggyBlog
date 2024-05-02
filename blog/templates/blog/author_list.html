@@ -1,0 +1,17 @@
+{% extends 'blog/list.html' %}
+
+{% block blog_title %}
+    {{author.get_full_name}}
+{% endblock %}
+
+{% block category_title %}
+    <h4 class="alert alert-primery text-center">مقالات: {{author.get_full_name}}</h4>
+{% endblock %}
+
+{% block previous_page_url %}
+    {% url 'Blog:author' author.username page_obj.previous_page_number %}
+{% endblock %}
+{% block next_page_url %}
+    {% url 'Blog:author' author.username page_obj.next_page_number %}
+{% endblock %}
+

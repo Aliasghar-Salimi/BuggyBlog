@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 from extentions.utils import jalali_converter
 from django.utils.html import format_html
+
+from django.contrib.auth.models import User
 # my managers
 class ArticleManager(models.Manager):
     def published(self):
@@ -45,6 +47,8 @@ class articles(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, verbose_name="وضعیت")
+    author = models.ForeignKey(User, verbose_name="نویسنده", null=True, related_name='articles',
+                                on_delete=models.SET_NULL)
     class Meta:
         verbose_name = 'مقاله'
         verbose_name_plural = 'مقالات'
@@ -66,3 +70,4 @@ class articles(models.Model):
     thumbnail_tag.short_description = 'عکس'
 
     objects = ArticleManager()
+    
