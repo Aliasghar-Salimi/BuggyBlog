@@ -35,3 +35,8 @@
   -moz-transition: all 0.4s;
   transition: all 0.4s;
 }
+.errors {
+  color: red;
+  background: #ffe2e2;
+  padding: 20px 30px;
+}
